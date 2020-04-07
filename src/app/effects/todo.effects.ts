@@ -11,7 +11,7 @@ import * as TodoActions from '../actions/todo.actions';
 export class TodoEffects {
 
   loadTodos$ = createEffect(() => {
-    return this.actions$.pipe( 
+    return this.actions$.pipe(
 
       ofType(TodoActions.loadTodos),
       concatMap(() =>
