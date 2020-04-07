@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 export interface Item {
   id: number;
@@ -10,16 +11,15 @@ export interface Item {
   providedIn: 'root'
 })
 export class TodoDataService {
-  testItem: Item = {id: 1, description: 'thing'};
 
-  constructor() {
+  constructor(private firestore: AngularFirestore) {
   }
 
   getTodos(): Observable<Item[]> {
-    return of([this.testItem]);
+    return this.firestore.collection<Item>('todos').valueChanges();
   }
 
   getDones(): Observable<Item[]> {
-    return of([this.testItem]);
+    return this.firestore.collection<Item>('dones').valueChanges();
   }
 }
