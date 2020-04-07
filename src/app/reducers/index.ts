@@ -6,13 +6,16 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
+import * as fromTodo from './todo.reducer';
 
 export interface State {
 
+  [fromTodo.todoFeatureKey]: fromTodo.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
 
+  [fromTodo.todoFeatureKey]: fromTodo.reducer,
 };
 
 

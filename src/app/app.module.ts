@@ -12,6 +12,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreModule} from '@ngrx/store';
 import {reducers, metaReducers} from './reducers';
 import { EffectsModule } from '@ngrx/effects';
+import * as fromTodo from './reducers/todo.reducer';
+import { TodoEffects } from './effects/todo.effects';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { EffectsModule } from '@ngrx/effects';
     }),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
+    StoreModule.forFeature(fromTodo.todoFeatureKey, fromTodo.reducer),
+    EffectsModule.forFeature([TodoEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
