@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "my-drag-able-todo-list": {
+      "hosting": {
+        "todo-app": [
+          "my-drag-able-todo-list"
+        ]
+      }
+    }
+  }
+}
