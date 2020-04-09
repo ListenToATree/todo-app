@@ -1,6 +1,6 @@
-import { reducer, initialState } from './todo.reducer';
+import { reducer, initialState } from './done.reducer';
 
-describe('Todo Reducer', () => {
+describe('Done Reducer', () => {
   describe('unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as any;

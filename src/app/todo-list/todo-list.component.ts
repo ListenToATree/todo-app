@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {Observable} from 'rxjs';
-import {State} from '../reducers';
+import {selectDones, selectTodos, State} from '../reducers';
 import {Store} from '@ngrx/store';
-import {selectDones, selectTodos} from '../selectors/todo.selectors';
-import {loadDones, loadTodos} from '../actions/todo.actions';
 import {tap} from 'rxjs/operators';
-import {Item} from './item';
+import {Item} from '../models/item.model';
+import {loadTodos} from '../actions/todo.actions';
+import {loadDones} from '../actions/done.actions';
 
 @Component({
   selector: 'app-todo-list',
@@ -17,7 +17,7 @@ export class TodoListComponent implements OnInit {
   todos$: Observable<Item[]>;
   dones$: Observable<Item[]>;
 
-  constructor(private store: Store<State>) {
+  constructor(private store: Store<State>, ) {
   }
 
   ngOnInit(): void {

@@ -3,8 +3,9 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, concatMap, map, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import * as TodoActions from '../actions/todo.actions';
+import * as DoneActions from '../actions/done.actions';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {Item} from '../todo-list/item';
+import {Item} from '../models/item.model';
 
 
 @Injectable()
@@ -28,12 +29,12 @@ export class TodoEffects {
 
   loadDones$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(TodoActions.loadDones),
+      ofType(DoneActions.loadDones),
       concatMap(() =>
         this.firestore.collection<Item>('dones').valueChanges()
           .pipe(
-            map(dones => TodoActions.loadDonesSuccess({dones})),
-            catchError(() => of(TodoActions.loadDonesFailure())))
+            map(dones => DoneActions.loadDonesSuccess({dones})),
+            catchError(() => of(DoneActions.loadDonesFailure())))
       )
     );
   });
