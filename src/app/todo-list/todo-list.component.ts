@@ -38,4 +38,7 @@ export class TodoListComponent implements OnInit {
     }
   }
 
+  deleteDone(done: Item) {
+    console.log(done);
+  }
 }
